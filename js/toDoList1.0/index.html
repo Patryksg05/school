@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage - introduction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body onload="initTask()">
+    
+    <!--
+        LOCAL STORAGE => INTRODUCTION
+            - dostep do magazynu localStorage => window.localStorage
+            - zapisywanie => window.localStorage.setItem(klucz, wartosc)
+            - wyczyszenie => window.localStorage.clear()
+            - zapisywany tylko w danej przegladarce
+    -->
+
+    <h1>To do tasks: </h1>
+    <p>Hello: <span>...</span></p>
+
+    <div id="taskList">
+
+    </div>
+
+    <form autocomplete="off"> 
+        <input type="text" name="task" id="task">
+        <button type="button">AddTask</button>
+    </form>
+
+    <script src="./src/scripts/main.js"></script>
+
+
+</body>
+</html>
