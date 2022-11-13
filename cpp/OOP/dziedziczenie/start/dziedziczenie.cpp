@@ -74,6 +74,75 @@ public:
     }
 };
 
+class Time {
+private:
+    int hour, minute, second;
+public:
+    Time () {}
+    Time(int a, int b, int c):
+        hour(a), minute(b), second(c)
+    {}
+
+    int getHour(){return this -> hour;}
+    int getMinute(){return this -> minute;}
+    int getSecond(){return this -> second;}
+
+    void setHour(int h) {this -> hour = h;}
+    void setMinute(int m) {this -> minute = m;}
+    void setSecond(int s) {this -> second = s;}
+
+    void toString() {
+        cout << getHour() << ":" << getMinute()
+            << ":" << getSecond();
+    }
+};
+
+class TimeWithControl: public Time {
+public:
+    TimeWithControl() {}
+    TimeWithControl(int x, int y, int z)
+        :Time(x,y,z)
+    {}
+
+    bool validateTheHour() {
+        if(Time::getHour()>0 && Time::getHour()<25)
+            return true;
+        else
+            return false;
+    }
+
+    bool validateTheMinute() {
+        if(Time::getMinute()>0 && Time::getMinute() < 61)
+            return true;
+        else
+            return false;
+    }
+
+    bool validateTheSecond() {
+        if(Time::getSecond()>0 && Time::getSecond() < 61)
+            return true;
+        else
+            return false;
+    }
+
+    void toString() {
+        if(TimeWithControl::validateTheHour()
+           && TimeWithControl::validateTheMinute()
+           && TimeWithControl::validateTheSecond())
+            cout << Time::getHour() << ":" << Time::getMinute()
+            << ":" << Time::getSecond();
+        else if(!TimeWithControl:: validateTheHour())
+            cout << "This hour not exists!";
+        else if(!TimeWithControl:: validateTheMinute())
+            cout << "This minute not exists!";
+        else if(!TimeWithControl:: validateTheSecond())
+            cout << "This second not exists!";
+        else
+            cout << "Everything was wrong!";
+    }
+
+};
+
 int main()
 {
     Student student1("Bradley", "Cooper");
@@ -88,6 +157,16 @@ int main()
 
     Person person1("Justin", "Barttra");
     person1.toString();
+
+    cout << endl << endl;
+
+    Time time1(10, 40, 23);
+    time1.toString();
+
+    cout << endl << endl;
+
+    TimeWithControl timeWithControl1 (10, 56, 58);
+    timeWithControl1.toString();
 
     return 0;
 }
