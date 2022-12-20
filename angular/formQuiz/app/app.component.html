@@ -1,0 +1,93 @@
+<form autocomplete="off" #form="ngForm" id="form">
+  <div class="form">
+      <h1>Public Survey</h1><hr>
+
+      <label for="name">
+          <span>Name: </span>
+          <input type="text" name="name" id="name" class="user-input"
+          [(ngModel)] = "name" required="true" #nameForm = "ngModel">
+          <div class="alert" *ngIf="nameForm.touched && nameForm.invalid">
+            <p style="text-indent: 15px; color: red; font-size: 14px;
+              font-style: italic; font-weight: bold; font-family: sans-serif;">
+              Name is required!
+            </p>
+          </div>
+      </label>
+
+      <label for="email">
+          <span>Email: </span>
+          <input type="email" name="email" id="email" class="user-input"
+          [(ngModel)] = "email" required="true" #emailForm = "ngModel"
+            pattern=".+@.+">
+          <div class="alert" *ngIf="emailForm.touched && emailForm.invalid
+            && !emailForm.errors?.['pattern']">
+            <p style="text-indent: 15px; color: red; font-size: 14px;
+              font-style: italic; font-weight: bold; font-family: sans-serif;">
+              Email adress is required!
+            </p>
+          </div>
+
+          <div class="alert" *ngIf="emailForm.touched && emailForm.invalid
+            && emailForm.errors?.['pattern']">
+            <p style="text-indent: 15px; color: red; font-size: 14px;
+            font-style: italic; font-weight: bold; font-family: sans-serif;">
+              Sth wrong with your email adress!
+            </p>
+        </div>
+      </label>
+
+      <label for="status">
+        <span>Professional status: </span>
+        <select name="status" id="status" class="user-input"
+          [(ngModel)] = "status" required="true" #statusForm = "ngModel">
+          <option value="Student">Student</option>
+          <option value="Worker">Worker</option>
+          <option value="Retired">Retired</option>
+          <option value="Unemployed">Unemployed</option>
+        </select>
+        <div class="alert" *ngIf="statusForm.touched && statusForm.invalid">
+          <p style="text-indent: 15px; color: red; font-size: 14px;
+          font-style: italic; font-weight: bold; font-family: sans-serif;">
+            Professional status is required!
+          </p>
+        </div>
+      </label>
+
+      <label for="mark">
+          <span>Customer service rating: </span>
+          <input type="number" name="mark" id="mark" class="user-input"
+            pattern="[1-5]" style="width: 15%;" [(ngModel)] = "rating"
+           required="true" #markForm = "ngModel" min="1">
+           <div class="alert" *ngIf="markForm.touched && markForm.invalid
+            && !markForm.errors?.['pattern']">
+            <p style="text-indent: 15px; color: red; font-size: 14px;
+             font-style: italic; font-weight: bold; font-family: sans-serif;">
+              Customer service rating is required!
+            </p>
+          </div>
+
+          <div class="alert" *ngIf="markForm.touched && markForm.invalid
+            && markForm.errors?.['pattern']">
+            <p style="text-indent: 15px; color: red; font-size: 14px;
+            font-style: italic; font-weight: bold; font-family: sans-serif;">
+              Only number from 1 to 5!
+            </p>
+        </div>
+      </label>
+
+      <div class="buttons">
+        <hr><button type="button" class="btn"
+          (click) = "onSubmit()" [disabled]="!form.form.valid">SUBMIT</button>
+        <button type="reset" class="btn"
+          (click)="onReset()">RESET</button>
+      </div>
+  </div>
+
+  <div class="popup" id="popup">
+    <img src="../assets/images/green_icon.png" alt="complete"
+      width="50" style="margin-top: -25px">
+      <h2>Thank You!</h2>
+      <p>Your details: </p>
+  </div>
+
+</form>

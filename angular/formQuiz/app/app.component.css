@@ -1,0 +1,113 @@
+div.form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #E5E5E5;
+  border-radius: 3%;
+  -webkit-box-shadow: 8px 8px 24px 0px rgba(152, 152, 152, 1);
+  -moz-box-shadow: 8px 8px 24px 0px rgba(152, 152, 152, 1);
+  box-shadow: 8px 8px 24px 0px rgba(152, 152, 152, 1);
+}
+
+div.form h1 {
+  text-align: center;
+  font-family: Cambria, Coachin, serif;
+  font-style: italic;
+  font-size: 35px;
+  padding: 0 20px;
+}
+
+label {
+  margin-top: 20px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+form div.form input.user-input {
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+  width: 35%;
+}
+
+form div.form span {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 8px 4px 7px 15px;
+  font-family: sans-serif;
+}
+
+div.buttons {
+  width: 100%;
+  text-align: center;
+}
+
+.btn {
+  background-color: rgba(152, 152, 152, 0.6);
+  padding: 10px 0;
+  margin-top: 10px;
+  font-weight: bold;
+  border: 0;
+  width: 25%;
+  margin-right: 12px;
+  margin-left: 12px;
+  margin-bottom: 13px;
+  outline: none;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 2px rgba(152, 152, 152, 0.6);
+}
+
+div.popup {
+  background-color: #E5E5E5;
+  width: 200px;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.2);
+  position: absolute;
+  text-align: center;
+  padding: 0 30px 30px;
+  font-family: Cabria, Cochin, serif;
+  border-radius: 6px;
+  visibility: hidden;
+  transition: transform 0.4s, top 0.4s;
+  -webkit-box-shadow: 8px 8px 24px 0px rgba(152, 152, 152, 1);
+  -moz-box-shadow: 8px 8px 24px 0px rgba(152, 152, 152, 1);
+  box-shadow: 8px 8px 24px 0px rgba(152, 152, 152, 1);
+}
+
+.open-popup {
+  background-color: #E5E5E5;
+  width: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  position: absolute;
+  text-align: center;
+  padding: 0 30px 30px;
+  font-family: Cabria, Cochin, serif;
+  border-radius: 6px;
+  visibility: visible;
+  transition: transform 0.4s, top 0.4s;
+  -webkit-box-shadow: 8px 8px 24px 0px rgba(152, 152, 152, 1);
+  -moz-box-shadow: 8px 8px 24px 0px rgba(152, 152, 152, 1);
+  box-shadow: 8px 8px 24px 0px rgba(152, 152, 152, 1);
+}
+
+div.popup h2 {
+  font-family: Cambria, Coachin, serif;
+  font-size: 30px;
+}
+
+select {
+  margin-right: 2px;
+}
+
+.visiiblity-hidden {
+  visibility: hidden;
+}
