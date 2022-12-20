@@ -1,0 +1,113 @@
+<form autocomplete="off" #form="ngForm" id="form">
+    <div class="form">
+        <h1>Public Survey About Programming...</h1><hr class="hr">
+
+        <label for="name">
+          <span>Your Name: </span>
+          <input type="text" name="name" id="name" class="user"
+            [(ngModel)] = "name" required="true" #nameForm = "ngModel"
+            pattern=".{3,}" title="Three or more characters!">
+            <div class="alert" *ngIf="nameForm.invalid &&
+                                      nameForm.touched">
+              <p style="text-indent: 15px; color: red;
+                  font-style: italic; font-weight: bold;">
+                      Name is required!
+              </p>
+            </div>
+        </label>
+
+        <label for="email">
+          <span>Your Email Adress: </span>
+          <input type="email" name="email" id="email" class="user"
+            [(ngModel)] = "email" required="true" #emailForm = "ngModel"
+            pattern=".+@.+">
+            <div class="alert" *ngIf="emailForm.invalid && emailForm.touched ||
+              emailForm.touched && emailForm.errors?.['patttern']">
+              <p style="text-indent: 15px; color: red;
+                font-style: italic; font-weight: bold;">
+                  Sth is wrong with your email address!
+              </p>
+            </div>
+            <!--if empty
+            <div class="alert" *ngIf="!emailForm.value">
+              <p style="text-indent: 15px; color: red;
+                font-style: italic; font-weight: bold;">
+                  Email is empty!
+              </p>
+            </div>
+            -->
+        </label>
+
+        <label for="age">
+          <span>Your Age: </span>
+          <input type="number" name="age" value id="age" class="user"
+            style="width: 10%" [(ngModel)] = "age" required="true"
+            #ageForm = "ngModel" max="1000">
+            <div class="alert" *ngIf="ageForm.invalid">
+              <p style="text-indent: 15px; color: red;
+                font-style: italic; font-weight: bold;">
+                  Age is required!
+              </p>
+            </div>
+        </label>
+
+        <label for="language">
+            <span>Your Favourite Programming Language: </span>
+            <select name="language" id="language" class="user"
+              [(ngModel)] = "language" required="true" #langaugeForm = "ngModel">
+                <option value="Java">Java</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="TypeScript">TypeScript</option>
+                <option value="C++">C++</option>
+                <option value="C">C</option>
+                <option value="Python">Python</option>
+                <option value="PHP">PHP</option>
+                <option value="HTML">HTML??</option>
+                <option value="Pascal">Pascal</option>
+                <option value="Ruby">Ruby</option>
+            </select>
+
+            <div class="alert" *ngIf="langaugeForm.invalid">
+              <p style="text-indent: 15px; color: red;
+                font-style: italic; font-weight: bold;">
+              </p>
+            </div>
+        </label>
+
+        <div class="radio" style="Width: 400px; Height: 130px;">
+          <label for="approache" style="float: left; margin-right: 15px; height: 70px;"
+            class="any_text">Programming<br>Approache: </label>
+          <p><input type="radio" name="rad" id="rad" value="Front-End"
+              [(ngModel)] = "type">Front-End</p>
+          <p><input type="radio" name="rad" id="rad" value="Back-End"
+            [(ngModel)] = "type">Back-End</p>
+          <p><input type="radio" name="rad" id="rad" value="Full-Stack"
+            [(ngModel)] = "type">Full-Stack</p>
+        </div>
+
+        <div class="hr"><hr style="margin-bottom: 0; margin-top: 7px;"></div>
+
+        <div class="buttons">
+            <button type="button" class="btn" (click) = "onSubmit()"
+              [disabled]="!form.form.valid">
+              SUBMIT</button>
+            <button type="reset" class="btn" (click) = "onReset()">
+              RESET</button>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+      <img src="../assets/images/green_icon.png" alt="complete" width="70"
+        style="margin-top: -25px;">
+      <h2>Thank you!</h2>
+      <p>Your details: </p>
+    </div>
+
+</form>
+
+<!--
+  KARTKOWKA:
+  Stworzenie ankiety na podstawie informacji nabytych przy
+  tworzeniu Formularza podczas zajęć wooo
+  ankieta: text, select, number, submit
+-->
