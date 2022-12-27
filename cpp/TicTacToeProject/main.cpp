@@ -1,6 +1,6 @@
 #include <iostream>
-#include <string>
 #include <stdlib.h>
+#include <string>
 
 using namespace std;
 
@@ -92,15 +92,12 @@ void playerTurn(char board[5][5])
     string userInput;
     while(true)
     {
-        cout << "Where would you like to play? (1-25)\n";
+        cout << "Where would you like to play? (1-25) => ";
         cin >> userInput;
-        if(isValidMove(board, stoi(userInput)) && stoi(userInput)<=25) {
+        if(isValidMove(board, stoi(userInput)) && stoi(userInput)<=25)
             break;
-        }
         else
-        {
             cout << userInput << " is not a valid move!\n";
-        }
     }
     placeMove(board, userInput, 'X');
 }
@@ -173,7 +170,7 @@ bool isGameFinished(char board[5][5])
 
 int main()
 {
-    cout << "TIC TAC TOE 2.0\n" << endl;
+    cout << "****** TIC TAC TOE BOARD 5X5 ******" << endl;
     char board[5][5] = { {' ', ' ', ' ', ' ', ' '},
                          {' ', ' ', ' ', ' ', ' '},
                          {' ', ' ', ' ', ' ', ' '},
@@ -181,7 +178,6 @@ int main()
                          {' ', ' ', ' ', ' ', ' '}
                        };
     printBoard(board);
-
     while(true)
     {
         playerTurn(board);
