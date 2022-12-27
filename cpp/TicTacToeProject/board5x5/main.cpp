@@ -1,20 +1,22 @@
 #include <iostream>
-#include <stdlib.h>
 #include <string>
+#include <stdlib.h>
+#include <windows.h>
 
 using namespace std;
 
+HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
 void printBoard(char board[5][5]) {
-    cout << board[0][0] << "|" << board[0][1] << "|" << board[0][2] << "|" << board[0][3] << "|" << board[0][4];
-    cout << "\n-+-+-+-+-\n";
-    cout << board[1][0] << "|" << board[1][1] << "|" << board[1][2] << "|" << board[1][3] << "|" << board[1][4];
-    cout << "\n-+-+-+-+-\n";
-    cout << board[2][0] << "|" << board[2][1] << "|" << board[2][2] << "|" << board[2][3] << "|" << board[2][4];
-    cout << "\n-+-+-+-+-\n";
-    cout << board[3][0] << "|" << board[3][1] << "|" << board[3][2] << "|" << board[3][3] << "|" << board[3][4];
-    cout << "\n-+-+-+-+-\n";
-    cout << board[4][0] << "|" << board[4][1] << "|" << board[4][2] << "|" << board[4][3] << "|" << board[4][4];
-    cout << "\n-+-+-+-+-\n";
+    cout << "\n\t" << board[0][0] << "|" << board[0][1] << "|" << board[0][2] << "|" << board[0][3] << "|" << board[0][4];
+    cout << "\n\t-+-+-+-+-\n";
+    cout << "\t" << board[1][0] << "|" << board[1][1] << "|" << board[1][2] << "|" << board[1][3] << "|" << board[1][4];
+    cout << "\n\t-+-+-+-+-\n";
+    cout << "\t" << board[2][0] << "|" << board[2][1] << "|" << board[2][2] << "|" << board[2][3] << "|" << board[2][4];
+    cout << "\n\t-+-+-+-+-\n";
+    cout << "\t" << board[3][0] << "|" << board[3][1] << "|" << board[3][2] << "|" << board[3][3] << "|" << board[3][4];
+    cout << "\n\t-+-+-+-+-\n";
+    cout << "\t" << board[4][0] << "|" << board[4][1] << "|" << board[4][2] << "|" << board[4][3] << "|" << board[4][4] << endl;
 }
 
 bool isValidMove(char board[5][5], int position)
@@ -92,12 +94,17 @@ void playerTurn(char board[5][5])
     string userInput;
     while(true)
     {
-        cout << "Where would you like to play? (1-25) => ";
+        cout << "\nPLAYER [X] turn => [1-25]: ";
         cin >> userInput;
-        if(isValidMove(board, stoi(userInput)) && stoi(userInput)<=25)
+        if(isValidMove(board, stoi(userInput)) && (stoi(userInput)<=25)) {
             break;
+        }
         else
-            cout << userInput << " is not a valid move!\n";
+        {
+            SetConsoleTextAttribute(hConsole, 12);
+            cout << "\n\t" << userInput << " is not a valid move!\n";
+            SetConsoleTextAttribute(hConsole, 15);
+        }
     }
     placeMove(board, userInput, 'X');
 }
@@ -113,7 +120,9 @@ void computerTurn(char board[5][5])
         }
     }
     placeMove(board, to_string(computerMove), 'O');
-    cout << "Computer move: " << computerMove << endl;
+    SetConsoleTextAttribute(hConsole, 9);
+    cout << "\nCOMPUTER [O] turn => " << computerMove << endl;
+    SetConsoleTextAttribute(hConsole, 15);
 }
 
 bool hasContenstantWon(char board[5][5], char symbol)
@@ -146,14 +155,18 @@ bool isGameFinished(char board[5][5])
     if(hasContenstantWon(board, 'X'))
     {
         printBoard(board);
-        cout << "Player wins!";
+        SetConsoleTextAttribute(hConsole, 2);
+        cout << "\n***** The game is end *****\n\tPLAYER WINS\n";
+        SetConsoleTextAttribute(hConsole, 15);
         return true;
     }
 
     if(hasContenstantWon(board, 'O'))
     {
         printBoard(board);
-        cout << "Computer wins!";
+        SetConsoleTextAttribute(hConsole, 2);
+        cout << "\n***** The game is end *****\n COMPUTER WINS, player lose :((";
+        SetConsoleTextAttribute(hConsole, 15);
         return true;
     }
 
@@ -164,13 +177,19 @@ bool isGameFinished(char board[5][5])
 
 
     printBoard(board);
-    cout << "The game is end!!! RESULT: DRAW";
+    SetConsoleTextAttribute(hConsole, 13);
+    cout << "\n***** The game is end *****\n\tRESULT => DRAW";
+    SetConsoleTextAttribute(hConsole, 15);
     return true;
 }
 
 int main()
 {
-    cout << "****** TIC TAC TOE BOARD 5X5 ******" << endl;
+    SetConsoleTextAttribute(hConsole, 9);
+    cout << "***** T I C -- T A C -- T O E => 5X5 VERSION *****\n";
+    SetConsoleTextAttribute(hConsole, 15);
+    cout << "\n\t\tPLAYER VS COMPUTER\n";
+    cout << "\n\t PLAYER - [X]\tCOMPUTER - [O]\n";
     char board[5][5] = { {' ', ' ', ' ', ' ', ' '},
                          {' ', ' ', ' ', ' ', ' '},
                          {' ', ' ', ' ', ' ', ' '},
@@ -178,6 +197,7 @@ int main()
                          {' ', ' ', ' ', ' ', ' '}
                        };
     printBoard(board);
+
     while(true)
     {
         playerTurn(board);
