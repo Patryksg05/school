@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">kartkowkaListView</string>
+    <string-array name="products">
+        <item>Maslo</item>
+        <item>Cukier</item>
+        <item>Chlebek</item>
+    </string-array>
+</resources>
