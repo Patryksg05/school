@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1675804759 source:c:\users\patryksg05\onedrive\pulpit\maturazadanie\main.cpp
+	<iostream>
+	<fstream>
+	<list>
+	<string>
+
