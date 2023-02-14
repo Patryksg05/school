@@ -35,17 +35,6 @@ bool isRacing(string n)
     return isRacing;
 }
 
-int maxi(string n)
-{
-    int maxi = n[0];
-    for(int i=0; i<200; i++)
-    {
-        if(maxi<n[i])
-            maxi = n[i];
-    }
-    return maxi;
-}
-
 int main()
 {
     cout << "Zadanie 6.a\n";
@@ -97,18 +86,26 @@ int main()
     cout << "\n\nZadanie 6.c\n";
 
     file3.open("dane.txt");
-    int totalRiseSequences = 0, max_value;
+    int totalRiseSequences = 0;
+    list<int> values;
     string line3;
     for(int i=0; i<200; i++)
     {
         getline(file3, line3);
-        cout << line3 << " " << isRacing(line3) << endl;
         if(isRacing(line3))
         {
             totalRiseSequences++;
+            cout << line3 << " " << isRacing(line3) << endl;
+            values.push_front(stoi(line3));
         }
     }
     cout << "Laczna liczba ciagow rosnacych: " << totalRiseSequences;
+
+    int max_value;
+    for(int i=0; i<sizeof(values)/sizeof(values[0]); i++)
+        if(max_value<values[i])
+            max_value = values[i];
+
     file3.close();
 
     return 0;
