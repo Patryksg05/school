@@ -278,7 +278,7 @@ let randomTab = Array(100).fill().map(() => 100* Math.random())
 for(let i=0; i<randomTab.length; i++)
     randomTab[i] = Math.floor(randomTab[i])
 
-console.log(descendingSort(randomTab))
+// console.log(descendingSort(randomTab))
 console.log("max element: " + max_value(randomTab) + " wystapila: " + findMaxAndHowManyIsInTheArray(randomTab))
 console.log("liczby nieparzyste: " + oddNumbers(randomTab)) // Wyświetl na ekran liczby nieparzyste.
 console.log("liczby o nieparzystym indexie: " + oddIndex(randomTab))
@@ -353,15 +353,25 @@ moreThanTen.length = moreThanTen.length
 console.log("tab>10: " + moreThanTen)
  */
 
-let tab4 = []
+console.log(descendingSort(randomTab))
 
-for(let i=0; i<100; i++)
+// Wypisz na ekran elementy, które występują w tablicy przynajmniej 3 razy
+// https://www.geeksforgeeks.org/find-all-array-elements-occurring-more-than-%E2%8C%8An-3%E2%8C%8B-times/
+
+// Utwórz pustą tablicę 100 elementów
+
+function fib(n)
 {
-    for(let j=0; j<randomTab.length; j++)
-        tab4[i] = randomTab[j] + randomTab[i]   
+    if(n<=1)
+        return n
+    return fib(n-1) + fib(n-2)
 }
 
-// console.log(tab4)
+let fibTab = []
+fibTab[0] = 1
+fibTab[1] = 1
 
-// console.log("posortowana malejaco: " + ascendingSort(randomTab))
-console.log(randomTab)
+for(let i=2; i<10; i++)
+    fibTab[i] = (fibTab[i-1] + fibTab[i-2])
+
+console.log(fibTab)

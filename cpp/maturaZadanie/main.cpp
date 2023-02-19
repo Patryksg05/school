@@ -86,26 +86,21 @@ int main()
     cout << "\n\nZadanie 6.c\n";
 
     file3.open("dane.txt");
-    int totalRiseSequences = 0;
-    list<int> values;
+    int totalRiseSequences = 0, max_value;
     string line3;
-    for(int i=0; i<200; i++)
+
+    for(int i=0; i<3; i++)
     {
+        max_value = line3[line3.size()-1];
         getline(file3, line3);
+        cout << line3 << " " << isRacing(line3) << endl;
         if(isRacing(line3))
         {
             totalRiseSequences++;
-            cout << line3 << " " << isRacing(line3) << endl;
-            values.push_front(stoi(line3));
         }
     }
     cout << "Laczna liczba ciagow rosnacych: " << totalRiseSequences;
-
-    int max_value;
-    for(int i=0; i<sizeof(values)/sizeof(values[0]); i++)
-        if(max_value<values[i])
-            max_value = values[i];
-
+    cout << endl << max_value;
     file3.close();
 
     return 0;
