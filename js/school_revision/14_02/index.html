@@ -9,6 +9,85 @@
 <body>
 
     <script src="script/script.js"></script>
+
+    <!-- SIŁA: wczyta z pola tekstowego hasło podane przez użytkownika, 
+        następnie bezpośrednio pod tym polem wypisze informację o jego sile:
+        – do 4 znaków hasło słabe
+        – do 8 znaków hasło średnie
+        – 8 lub więcej znaków hasło mocne
+        – brak cyfry hasło słabe
+        – brak dużej litery hasło słabe
+        – brak małej litery hasło słabe
+        – brak znaku specjalnego hasło słabe
+    -->
+
+    <form>
+        <p>Type your password: <input type="password" name="pass" id="pass" placeholder="Password" required></p>
+        <p><button type="button">check</button></p>
+    </form>
+
+    <p id="password_result">Your password is: </p>
+
+    <script>
+        document.querySelectorAll("button")[0].addEventListener("click", () => {
+            let weak = 0, medium = 0, strong = 0;
+            const specialChars = /[`[email protected]#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
+            let result = ""
+            let password = document.getElementById("pass").value;
+            if(password.length <= 4 && password.length>1)
+            {
+                // pass_length+="slabe"
+                weak++;
+            }
+            else if(password.length <=8 && password.length > 4)
+            {
+                // pass_length+="srednie"
+                medium++;
+            }
+            else if(password.length > 8)
+            {
+                // pass_length+="mocne"
+                strong++;
+            }
+            else if(!isNaN(password))
+            {
+                weak++;
+            }
+            else if(!/[A-Z]/.test(password))
+            {
+                weak++;
+            }
+            else if(!/[a-z]/.test(password))
+            {
+                weak++;
+            }
+            else if(!specialChars.test(password))
+                weak++;
+
+            if(weak > medium && weak > strong)
+            {
+                result = "slabe"
+                document.getElementById("password_result").style.color = "#FF0000"
+                document.getElementById("password_result").style.fontWeight = "bold"
+            }
+
+            if(medium > weak && medium > strong)
+            {
+                result = "srednie"
+                document.getElementById("password_result").style.color = "#FFFF00"
+                document.getElementById("password_result").style.fontWeight = "bold"
+            }
+
+            if(strong > weak && strong > medium)
+            {
+                result = "mocne"
+                document.getElementById("password_result").style.color = "#00FF00"
+                document.getElementById("password_result").style.fontWeight = "bold"
+            }
+
+            document.getElementById("password_result").innerHTML = result;
+        })
+    </script>
     
 </body>
 </html>
