@@ -8,6 +8,82 @@
 </head>
 <body>
 
+    <!-- KALKULATOR: Obliczy wybrane przez użytkownika 
+         działanie (suma, różnica, iloczyn lub iloraz) z 
+         dwóch podanych przez użytkownika liczb. 
+         Wynik działania umieści w kontenerze o id wynik.
+
+    <p>Value1: <input type="number" name="num1" id="num1"></p>
+    <p>Value2: <input type="number" name="num2" id="num2"></p>
+    <div class="buttons">
+        <button type="button">+</button>
+        <button type="button">-</button>
+        <button type="button">*</button>
+        <button type="button">/</button>
+    </div>
+    <p id="result"></p>
+
+    <script>
+        let sum_num, diff_num, mutli_num, div_num;
+        document.querySelectorAll("button")[0].addEventListener("click", ()=>{
+            if(document.getElementById("num1").value != "" &&
+            document.getElementById("num2").value != "")
+            {
+                sum_num = parseInt(document.getElementById("num1").value) + 
+                    parseInt(document.getElementById("num2").value)
+
+                document.getElementById('result').innerHTML = sum_num
+            }
+            else
+                alert("fill all gaps")
+        })
+    </script>
+
+
+    SIŁA: wczyta z pola tekstowego hasło 
+    podane przez użytkownika, następnie 
+    bezpośrednio pod tym polem wypisze 
+    informację o jego sile:
+    – do 4 znaków hasło słabe
+    – do 8 znaków hasło średnie
+    – 8 lub więcej znaków hasło mocne
+    – brak cyfry hasło słabe
+    – brak dużej litery hasło słabe
+    – brak małej litery hasło słabe
+    – brak znaku specjalnego hasło słabe
+
+    -->
+
+    <p>Password: <input type="text" name="pass" id="pass" required></p>
+    <p><button type="button">check</button></p>
+    <p id="result"></p>
+
+    <script>
+        let total_result = "";
+        document.querySelectorAll("button")[0].addEventListener("click", ()=>{
+            if(document.getElementById("pass").value != null)
+            {
+                let password = document.getElementById("pass").value
+                let password_length = "";
+                let isNumber = "";
+                if(password.length <= 4)
+                    password_length = "slabe"
+                else if(password.length <= 8)
+                    password_length = "srednie"
+                else 
+                    password_length = "mocne"
+                
+                if(!/[0-9]/.test(password))
+                    isNumber = "slabe"
+
+                total_result += password_length
+                total_result = " " + isNumber
+            } 
+
+            document.getElementById("result").innerHTML = total_result
+        })
+    </script>
+
     <script src="script/script.js"></script>
 
     <!-- SIŁA: wczyta z pola tekstowego hasło podane przez użytkownika, 

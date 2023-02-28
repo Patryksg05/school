@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartkowka Maciak Patryk</title>
+</head>
+<body>
+
+    <script>
+        // let userInput, sum = 0
+        // for(let i=0; i<2; i++)
+        // {
+            // userInput = prompt("Enter a number: ")
+            // sum += parseInt(userInput)
+        // }
+        // alert("Sum equals: " + sum)
+
+        let scores = []
+        let diff = 0, multi = 1, divide = 1
+        let userInput1, userInput2
+
+        userInput1 = parseInt(prompt("Num1: "))
+        userInput2 = parseInt(prompt("Num2: "))
+
+        diff = userInput1 - userInput2
+        multi = userInput1*userInput2
+        divide = userInput1/userInput2
+
+        scores.push(diff)
+        scores.push(multi)
+        scores.push(divide)
+        console.log(scores)
+
+        const poleKola = (num) => num* 3.141592653589793;
+
+        console.log('Pole kola o promieniu 1 wynosi: ' + poleKola(1))
+        console.log('Pole kola o promieniu 2 wynosi: ' + poleKola(2))
+        console.log('Pole kola o promieniu 8 wynosi: ' + poleKola(10))
+
+        const poleProstokata = (a,b) => a*b
+        console.log('Pole prostoka: 2x5 = ' + poleProstokata(2,5))
+        console.log('Pole prostokata: 20x50 = ' + poleProstokata(20,50)) 
+
+        let bok1, bok2, bok3
+        bok1 = prompt("Bok1: ")
+        bok2 = prompt("Bok2: ")
+        bok3 = prompt("Bok3 : ")
+        // console.log(bok1 + " " + bok2 + " " + bok3)
+
+        bok1 = parseInt(bok1)
+        bok2 = parseInt(bok2)
+        bok3 = parseInt(bok3)
+      
+        let result = checkValidity(bok1,bok2,bok3)?"valid":"invalid"
+        alert(result)
+
+        function checkValidity(a, b, c) 
+        { 
+            if (a + b <= c || a + c <= b || b + c <= a) 
+                return false; 
+            else
+                return true; 
+        } 
+
+        // zadanie 3.1
+        // let num
+        // while(true)
+        // {
+            // num = prompt("Enter a number: ")
+            // if(num == 0)
+                // console.log('Zero')
+            // else
+                // console.log('Liczba rozna od zera')
+        // }
+
+        // zadanie 3.2
+        // let num1, num2, suma = 0
+        // while(true)
+        // {
+            // num1 = parseInt(prompt("Enter a number1 : "))
+            // num2 = parseInt(prompt("Enter a number2 : "))
+            // suma = num1 + num2
+
+            // if(suma == 0)
+            // {
+                // console.log('suma rowna = 0, break')
+                // break;
+            // }
+            // else
+                // console.log('suma rowna = ' + suma)
+        // }
+
+        // zadanie 3.3
+        // const evenNum = (num) => num%2==0   
+        // let num = prompt("Enter a number: ")
+        // let result = evenNum(num)?"parzysta":"nie parzysta"
+        // alert(result)
+            
+    </script>
+    
+</body>
+</html>

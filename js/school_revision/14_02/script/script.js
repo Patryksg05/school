@@ -359,6 +359,10 @@ console.log(descendingSort(randomTab))
 // https://www.geeksforgeeks.org/find-all-array-elements-occurring-more-than-%E2%8C%8An-3%E2%8C%8B-times/
 
 // Utwórz pustą tablicę 100 elementów
+// Wypełnij tablicę kolejnymi liczbami ciągu Fibonacciego.
+// Wypełnij tablicę kolejnymi potęgami liczby 2.
+// Wypełni tablicę ciągiem liczb: 3, 6, 9, 12, …
+// Wypełni tablicę ciągiem liczb: 2, 4, 8, 16, 32, …
 
 function fib(n)
 {
@@ -367,11 +371,38 @@ function fib(n)
     return fib(n-1) + fib(n-2)
 }
 
-let fibTab = []
+let fibTab = [], squareTwo = [], threeSequence = [] , twoTimesMore = []
 fibTab[0] = 1
 fibTab[1] = 1
 
-for(let i=2; i<10; i++)
+for(let i=2; i<=10; i++)
+{
     fibTab[i] = (fibTab[i-1] + fibTab[i-2])
+}
 
 console.log(fibTab)
+// console.log(squareTwo)
+// console.log(threeSequence)
+// console.log(twoTimesMore)
+
+// FUNKCJE
+
+// 1. SUMA: obliczy i wyświetli na ekran sumę 2 
+// liczb całkowitych podanych przez użytkownika.
+// PODSTAWY: obliczy różnicę, iloczyn i iloraz 2 liczb podanych przez użytkownika.
+// let val1, results = []
+// let sum1 = 0, diff1, quotient = 1, multi = 1
+// for(let i=0; i<2; i++)
+// {
+//     val1 = prompt("value" + multi++ + ": " );
+//     sum1 += parseInt(val1)
+//     diff1 -= parseInt(val1)
+//     multi *= parseInt(val1)
+//     quotient /= parseInt(val1) 
+// }
+// results.push(sum1)
+// results.push(diff1)
+// results.push(quotient)
+// results.push(multi)
+// console.log(results)
+
