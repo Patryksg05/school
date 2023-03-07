@@ -3,8 +3,7 @@
 
 /*
 * POLIMORFIZM => c.p.o. , umozliwiajaca rozne zachowanie tych samych metod wirtulanych w czasie 
-*   wykonywania programu, brak slowo kluczowego, inicjuje sie go po przez metody wirtualne
-* 
+*   wykonywania programu, brak slowo kluczowego, inicjuje sie go po przez metody 
 */
 
 using namespace std;
@@ -51,72 +50,47 @@ public:
 
 class Funkcja {
 public:
-	float x;
-	virtual float value(float x) { return x; }
+	double x;
+	//virtual float value(float x) { return x; }
+	virtual double value(double x) { return x; };
 };
 
 class Funkcja_liniowa : public Funkcja
 {
 public:
-	float a, b;
-	float value() {return a * Funkcja::x + b;}
+	double a, b;
+	double value() {return a * Funkcja::x + b;}
 };
 
-class Czworokat {
-protected:
-	int a,b,c,d;
-public:
-	Czworokat(int a=0, int b=0, int c=0, int d=0)
-	{
-		this->a = a;
-		this->b = b;
-		this->c = c;
-		this->d = d;
-	}
+double bisekcja(Funkcja* funkcja, double p, float k, float d)
+{
+	double fp = funkcja->value(p);
+	double fk = funkcja->value(k);
 
-	void wypisz(){ cout << this->a << "x" << this->b << "x" << this->c << "x" << this->d;}
-	virtual int pole() { return a * b * c * d; }
-};
+	if (fp * fk > 0) { cout << "brak mz w danym przedziale!"; 
+		return -1; }
 
-class Prostokat : Czworokat {
-public:
-	Prostokat(int a, int b)
+	double srodek;
+	while ((k - p) > d)
 	{
-		Czworokat::a = a;
-		Czworokat::b = b;
-		Czworokat::c = a;
-		Czworokat::d = b;
-	}
+		srodek = (p + k) / 2;
+		double fs = funkcja->value(srodek);
 
-	void wymiary(int w1, int w2)
-	{
-		Czworokat::a = w1;
-		Czworokat::c = w1;
-		Czworokat::b = w2;
-		Czworokat::d = w2;
+		if (fs == 0)
+			return fs;
+		else if (fp * fs < 0)
+		{
+			k = srodek;
+			fk = fs;
+		}
+		else
+		{
+			p = srodek;
+			fp = fs;
+		}
 	}
-	int pole() { return Czworokat::a * Czworokat::b; }
-};
-
-class Kwadrat : Czworokat {
-public:
-	Kwadrat(int a)
-	{
-		Czworokat::a = a;
-		Czworokat::b = a;
-		Czworokat::c = a;
-		Czworokat::d = a;
-	}
-
-	void wymiary(int w1)
-	{
-		Czworokat::a = w1;
-		Czworokat::c = w1;
-		Czworokat::b = w1;
-		Czworokat::d = w1;
-	}
-	int pole() { return Czworokat::a * Czworokat::a; }
-};
+	return (p + k) / 2;
+}	
 
 double function(double x)
 {
@@ -144,6 +118,135 @@ void metoda_bisekcji(double a, double b)
 			a = c;
 	}
 	cout << "\npierwiastek: " << c;
+}
+
+class Czworokat {
+protected:
+	int a,b,c,d;
+public:
+	Czworokat(int a=0, int b=0, int c=0, int d=0)
+	{
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->d = d;
+	}
+
+	virtual void wypisz(){ cout << this->a << "x" << this->b << "x" << this->c << "x" << this->d << endl ;}
+	virtual int pole() { return a * b * c * d; }
+};
+
+class Prostokat : public Czworokat {
+public:
+	Prostokat(int a, int b)
+	{
+		Czworokat::a = a;
+		Czworokat::b = b;
+		Czworokat::c = a;
+		Czworokat::d = b;
+	}
+
+	void wymiary(int w1, int w2)
+	{
+		Czworokat::a = w1;
+		Czworokat::c = w1;
+		Czworokat::b = w2;
+		Czworokat::d = w2;
+	}
+	int pole() { return Czworokat::a * Czworokat::b; }
+	void wypisz() { cout <<this->a << "x" << this->b << endl; }
+};
+
+class Kwadrat : public Czworokat {
+public:
+	Kwadrat(int a)
+	{
+		Czworokat::a = a;
+		Czworokat::b = a;
+		Czworokat::c = a;
+		Czworokat::d = a;
+	}
+
+	void wymiary(int w1)
+	{
+		Czworokat::a = w1;
+		Czworokat::c = w1;
+		Czworokat::b = w1;
+		Czworokat::d = w1;
+	}
+	int pole() { return Czworokat::a * Czworokat::a; }
+	void wypisz() { cout << this->a << "x" << this->a << endl; }
+};
+
+void wypisz_pola(Czworokat **tab)
+{
+	for (int i = 0; i < sizeof(tab); i++)
+	{
+		cout << "pole: " << i + 1 << " czworokata = " << tab[i]->pole() << endl;
+	}
+}
+
+/*
+	uloz algorytm i zapisz go w wybranej notacji, ktory dla 
+	dodatniej liczby calkowitej n oblicza max liczbe kolejnych 
+	wystepujacych jedynek w zapisie binarnym 
+*/
+
+void jedynki_binarnie(int n)
+{
+	int a = n;
+	
+	string binary_num;
+	int counter = 0, max=0;
+
+	// convert
+	while (n)
+	{
+		binary_num = (n % 2 ? "1" : "0") + binary_num;
+		n /= 2;
+	}
+
+	for (int i = 0; i < binary_num.size(); i++)
+	{
+		if (binary_num[i] % 2 == 1)
+			counter++;
+		if (binary_num[i] % 2 == 0)
+			counter = 0;
+
+		if (counter > max)
+			max = counter;
+
+	}
+	cout << a << " = " << binary_num << " wystapienia 1: " << max << endl;
+}
+
+/*
+	w systemie trojkowm... 
+*/
+
+void trojkowy(double x, int n)
+{
+	//string result = "0.";
+	cout << "0.";
+	double y = x;
+
+	for (int i = 1; i <= n; i++)
+	{
+		if (y >= 2.0 / 3.0)
+			cout << "2";
+		else if (y >= 1.0 / 3.0 && y < 2.0 / 3.0)
+			cout << "1";
+		else if (y < 1.0 / 3.0)
+			cout << "0";
+
+		y = y * 3.0;
+
+		if (y >= 2.0)
+			y -= 2.0;
+		else if (y >= 1.0)
+			y -= 1.0;
+	}
+	cout << endl;
 }
 
 int main()
@@ -177,10 +280,12 @@ int main()
 	cout << endl << std::boolalpha << zespolone1.wieksza(zespolone2);
 
 	Funkcja_liniowa f1;
-	f1.a = 2; // 2x-3
-	f1.b = -3;
+	f1.a = 2.0; // 2x-3
+	f1.b = -3.0;
 	f1.x = 2; 
 	cout << endl << "f(" << f1.x << ") = " << f1.value() << endl;
+	//int bis = bisekcja(&f1, 0.00, 5.00, 0.00001);
+	//cout << "bisekcja = " << bis << endl;
 
 	int a=2, b=2, c=4, d=5;
 	Czworokat *czw1 = new Czworokat(a,b,c,d);
@@ -189,8 +294,33 @@ int main()
 
 	metoda_bisekcji(-200, 300);
 
-	//double a = -200, b = 300;
-	//metoda_bisekcji(a, b);
+	cout << endl;
+	Czworokat** czworokaty = new Czworokat * [4];
+	czworokaty[0] = new Kwadrat(4);
+	czworokaty[1] = new Kwadrat(3);
+	czworokaty[2] = new Prostokat(2,10);
+	czworokaty[3] = new Prostokat(3,5);
+
+	//for (int i = 0; i < 4; i++)
+	//{
+		//czworokaty[i]->wypisz();
+	//}
+
+	//wypisz_pola(czworokaty);
+
+	// ttps://www.rapidtables.com/convert/number/decimal-to-binary.html
+	cout << "\nJEDYNKI BINARNIE" << endl;
+	jedynki_binarnie(15);
+	jedynki_binarnie(20);
+	jedynki_binarnie(11);
+	jedynki_binarnie(111);
+	jedynki_binarnie(211);
+	jedynki_binarnie(1024);
+
+	cout << "\nSYSTEM TROJKOWY" << endl;
+	trojkowy(0.8, 5);
+	trojkowy(0.5, 5);
+	trojkowy(0.7, 5);
 
 	return 0;
 }   

@@ -1,2 +1,3 @@
 ﻿  Polimorfizm.cpp
-  Polimorfizm.vcxproj -> C:\Users\Patryk\Desktop\Polimorfizm\x64\Debug\Polimorfizm.exe
+C:\Users\Patryksg05\OneDrive\Pulpit\school\cpp\polimorfizm\Polimorfizm\Polimorfizm.cpp(83,8): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
+  Polimorfizm.vcxproj -> C:\Users\Patryksg05\OneDrive\Pulpit\school\cpp\polimorfizm\x64\Debug\Polimorfizm.exe
