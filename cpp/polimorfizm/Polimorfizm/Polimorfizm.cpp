@@ -40,19 +40,22 @@ public:
 	double re;
 	virtual double modul() { return std::abs(re); }
 	bool wieksza(Liczba& ref) { return ref.modul() > Liczba::modul(); }
+	double getRe(){ return std::abs(re); }
+	double getRef(Liczba& ref){ return ref.modul(); }
 };
 
 class Zespolone : public Liczba {
 public:
 	int im;
 	double modul() { return std::sqrt(Liczba::re*Liczba::re + this -> im * this->im); }
+	double getIm() { return std::sqrt(Liczba::re * Liczba::re + this->im * this->im); }
 };
 
 class Funkcja {
 public:
 	double x;
 	//virtual float value(float x) { return x; }
-	virtual double value(double x) { return x; };
+	virtual double value() = 0;
 };
 
 class Funkcja_liniowa : public Funkcja
@@ -62,10 +65,10 @@ public:
 	double value() {return a * Funkcja::x + b;}
 };
 
-double bisekcja(Funkcja* funkcja, double p, float k, float d)
+double bisekcja(Funkcja_liniowa* f, double p, float k, float d)
 {
-	double fp = funkcja->value(p);
-	double fk = funkcja->value(k);
+	double fp = f->x = p;
+	double fk = f->x = k;
 
 	if (fp * fk > 0) { cout << "brak mz w danym przedziale!"; 
 		return -1; }
@@ -74,7 +77,7 @@ double bisekcja(Funkcja* funkcja, double p, float k, float d)
 	while ((k - p) > d)
 	{
 		srodek = (p + k) / 2;
-		double fs = funkcja->value(srodek);
+		double fs = f->x = srodek;
 
 		if (fs == 0)
 			return fs;
@@ -94,14 +97,14 @@ double bisekcja(Funkcja* funkcja, double p, float k, float d)
 
 double function(double x)
 {
-	return 2 * x + 4;
+	return 2*x + 4;
 }
 
 void metoda_bisekcji(double a, double b)
 {
 	if (function(a) * function(b) >= 0)
 	{
-		cout << "piewiastek nie nalezy do przedzialu" << endl;
+		cout << "\npiewiastek nie nalezy do przedzialu" << endl;
 		return;
 	}
 
@@ -271,28 +274,29 @@ int main()
 	Liczba liczba1, liczba2;
 	Zespolone zespolone1, zespolone2;
 	liczba1.re = -4.65;
-	liczba2.re = -6.76;
+	liczba2.re = -5.76;
+
 	zespolone1.re = 1;
 	zespolone1.im = -2;
-	zespolone1.re = -3;
+	zespolone2.re = -3;
 	zespolone2.im = 4;
-	cout << std::boolalpha << liczba1.wieksza(liczba2);
+
+	cout << endl << liczba1.getRe() << " < " << liczba1.getRef(liczba2) << " = "
+		<< std::boolalpha << liczba1.wieksza(liczba2);
 	cout << endl << std::boolalpha << zespolone1.wieksza(zespolone2);
 
 	Funkcja_liniowa f1;
 	f1.a = 2.0; // 2x-3
 	f1.b = -3.0;
-	f1.x = 2; 
+	f1.x = 1; 
 	cout << endl << "f(" << f1.x << ") = " << f1.value() << endl;
-	//int bis = bisekcja(&f1, 0.00, 5.00, 0.00001);
-	//cout << "bisekcja = " << bis << endl;
+	metoda_bisekcji(-3, 0);
 
+	cout << endl;
 	int a=2, b=2, c=4, d=5;
 	Czworokat *czw1 = new Czworokat(a,b,c,d);
 	czw1->wypisz();
-	cout <<  endl << czw1->pole();
-
-	metoda_bisekcji(-200, 300);
+	cout << "pole cz1 jest rowne: " << czw1->pole();
 
 	cout << endl;
 	Czworokat** czworokaty = new Czworokat * [4];
@@ -302,13 +306,12 @@ int main()
 	czworokaty[3] = new Prostokat(3,5);
 
 	//for (int i = 0; i < 4; i++)
-	//{
 		//czworokaty[i]->wypisz();
-	//}
 
 	//wypisz_pola(czworokaty);
 
 	// ttps://www.rapidtables.com/convert/number/decimal-to-binary.html
+	
 	cout << "\nJEDYNKI BINARNIE" << endl;
 	jedynki_binarnie(15);
 	jedynki_binarnie(20);
