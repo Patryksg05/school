@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/leftSide"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:id="@+id/textViewTimer"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="30dp"
+            android:text="00:00:00"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_gravity="center" />
+
+
+        <TextView
+            android:id="@+id/textViewResults"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="center"
+            android:text="wyniki"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_below="@+id/textViewTimer" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/rightSide"
+        android:layout_width="500dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/startBtn"
+            android:layout_width="350dp"
+            android:layout_height="70dp"
+            android:text="start"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/red"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/stopBtn"
+            android:layout_width="350dp"
+            android:layout_height="70dp"
+            android:layout_below="@+id/startBtn"
+            android:text="stop"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/yellow"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/resetBtn"
+            android:layout_width="350dp"
+            android:layout_height="70dp"
+            android:layout_below="@+id/stopBtn"
+            android:text="zeruj"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="350dp"
+            android:layout_height="70dp"
+            android:layout_below="@+id/resetBtn"
+            android:text="zapisz"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/blue"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+</LinearLayout>
