@@ -1,11 +1,15 @@
 ﻿#include <iostream>
 #include <queue>
+#include <cstdlib>
+#include <string>
+#include <conio.h>
 
 using namespace std;
 
 class Kolejka {
 public:
 	queue<int> liczby;
+	string nazwa_kolejki;
 	Kolejka() {}
 	Kolejka(const Kolejka& kolejka) { liczby = kolejka.liczby; }
 	~Kolejka() {}
@@ -13,44 +17,78 @@ public:
 	void usun_pierwszy() { liczby.pop(); }
 	void dodajNaKoniec(int a) { liczby.push(a); }
 	bool pusta() { return liczby.empty(); }
+	void setNazwa(string n) { this->nazwa_kolejki = n; }
+	string getNazwa() { return this->nazwa_kolejki; }
+	int size() { return liczby.size(); }
 };
 
 int main()
 {
-	Kolejka* kolejka = new Kolejka();
-	bool runner = true;
-	cout << "MENU:\n1.PIERWSZY ELEMENT\n2.USUN PIERWSZY ELEMENT\n3.DODAJ ELEMENT NA KONIEC\n"
-		<< "4.CZY KOLEJKA JEST PUSTA\n5.USUN KOLEJKE\n6.koniec\nwybor:" << endl;
+	//cout << "MENU\n1.Utworz kolejke\n2.Pierwszy element\n3.Dodaj element na koniec"
+		//<< "\n4.Usun pierwszy element\n5.Czy kolejka jest pusta\n6. Wypisz elementy\n7.wyjscie";
+	cout << "MENU\n1.Utworz kolejke\n";
 
-	while (runner)
+	bool runner = true;
+	Kolejka* kolejka;
+
+	while (true)
 	{
-		int user_input;
-		cin >> user_input;
-		switch (user_input)
+		int n;
+		cout << endl << "wybor:"; cin >> n;
+		if (n != 1) cout << "\t1. UTWORZ KOLEJKE!";
+
+		if (n == 1)
 		{
-		case 1:
-			if (!kolejka->pusta()) { cout << "pierwszy element: " << kolejka->pierwszy(); }
-			else { cout << "kolejka jest pusta!\n"; }
-			break;
-		case 2: 
-			if (!kolejka->pusta()) { cout << "usunieto" << kolejka->pierwszy();  kolejka->usun_pierwszy(); }
-			else { cout << "kolejka jest pusta!\n"; }
-			break;
-		case 3:
-			kolejka->dodajNaKoniec(5);
-			kolejka->dodajNaKoniec(15);
-			kolejka->dodajNaKoniec(12);
-			break;
-		case 4:
-			kolejka->pusta() ? cout << "pusta\n" : cout << "nie pusta\n";
-			break;
-		case 5:
-			kolejka -> ~Kolejka();
-		case 6:
-			runner = false;
-		default:
+			string nazwa_kolejki;
+			kolejka = new Kolejka();
+			cout << endl << "Nazwa kolejki: "; cin >> nazwa_kolejki;
+			kolejka->setNazwa(nazwa_kolejki);
 			break;
 		}
 	}
 
+	system("CLS");
+	cout << "UTWORZONO KOLEJKE: " << kolejka->getNazwa();
+	cout << "\n1.Pierwszy element\n2.Dodaj element na koniec"
+		<< "\n3.Usun pierwszy element\n4.Czy kolejka jest pusta\n5.Wypisz elementy\n6.usun kolejke\n7.wyjscie";
+
+	while (runner)
+	{
+		int user_input, element;
+		cout << endl << "wybor: "; cin >> user_input;
+		
+		switch (user_input)
+		{
+			case 1: kolejka->pusta() ? cout << "\nkolejka jest pusta!" 
+				: cout << "\npierwszy element: " << kolejka->pierwszy(); 
+				break;
+			case 2: 
+				int a;
+				cout << "\nIle elementow dodac?"; cin >> a;
+				for (int i = 0; i < a; i++)
+				{
+					cout << i + 1 << ". element = "; cin >> element;
+					kolejka->dodajNaKoniec(element);
+				}
+				break;
+			case 3:
+				kolejka->pusta() ? cout << "\nkolejka jest pusta!" : cout << "\nusunieto element: " << kolejka->pierwszy();
+				kolejka->usun_pierwszy();
+				break;
+			case 4:
+				cout << "\nkolejka pusta?=" << boolalpha << kolejka->pusta();
+				break;
+			case 5:
+
+				break;
+			case 6:
+				cout << "\ndestruktor :cc";
+				kolejka->~Kolejka();
+				return 0;
+				break;
+			case 7: return 0; break;
+			default:
+				break;
+		}
+	}
 }

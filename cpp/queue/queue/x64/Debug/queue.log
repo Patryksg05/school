@@ -1,2 +1,3 @@
 ﻿  queue.cpp
-  queue.vcxproj -> C:\Users\Patryk\Desktop\queue\x64\Debug\queue.exe
+C:\Users\Patryksg05\OneDrive\Pulpit\school\cpp\queue\queue\queue.cpp(22,13): warning C4267: "return": konwersja z "size_t" do "int", możliwa utrata danych
+  queue.vcxproj -> C:\Users\Patryksg05\OneDrive\Pulpit\school\cpp\queue\x64\Debug\queue.exe
