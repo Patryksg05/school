@@ -26,7 +26,7 @@ int main()
     cout << "SCHEMAT HORNERA\n";
 
     vector<int> wspolczynniki;
-    wspolczynniki.push_back(1);
+    wspolczynniki.push_back(2);
     wspolczynniki.push_back(3);
     wspolczynniki.push_back(-6);
 
