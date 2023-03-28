@@ -1,0 +1,69 @@
+﻿<Window x:Class="formularze_kartkowka.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:formularze_kartkowka"
+        mc:Ignorable="d"
+        Title="Formularze kartkowka" Height="450" Width="800">
+    <DockPanel>
+        <TextBlock Text="Generator Hasła" TextAlignment="Center" FontSize="35"
+                   DockPanel.Dock="Top"/>
+        <Grid DockPanel.Dock="Top" Margin="0 15 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Z ilu znakow ma sie skladac haslo?" FontSize="16"
+                       TextAlignment="Center" VerticalAlignment="Center" FontStyle="Italic"/>
+            <TextBox Grid.Column="1" x:Name="pass_length"/>
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <DockPanel>
+                <TextBlock Text="Co haslo ma zawierac?" FontSize="14" 
+                           DockPanel.Dock="Top" TextAlignment="Center" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Male litery" TextAlignment="Center" Grid.Row="0" VerticalAlignment="Center"/>
+                    <TextBlock Text="Duze litery" FontWeight="Bold"
+                               TextAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
+                    <TextBlock Text="Cyfry" FontWeight="Bold"
+                               TextAlignment="Center" Grid.Row="2" VerticalAlignment="Center"/>
+                    <TextBlock Text="Znaki specjalne" TextAlignment="Center" Grid.Row="3" VerticalAlignment="Center"/>
+
+                    <CheckBox x:Name="small_caps" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <CheckBox x:Name="upper_caps" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <CheckBox x:Name="digits" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <CheckBox x:Name="special_chars" Grid.Column="1" Grid.Row="3"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+            </DockPanel>
+
+            <Button Grid.Column="1" Click="random_password_generator" Content="generuj haslo" 
+                    FontSize="35" FontStyle="Italic"/>
+
+        </Grid>
+    </DockPanel>
+</Window>
