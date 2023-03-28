@@ -7,6 +7,32 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Imie: " TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Text="Nazwisko: " Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Text="Haslo1: " Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Text="Haslo2: " Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+
+        <TextBox x:Name="name_box" Grid.Column="1" Grid.Row="0"/>
+        <TextBox x:Name="surname_box" Grid.Column="1" Grid.Row="1"/>
+        <TextBox x:Name="pass1_box" Grid.Column="1" Grid.Row="2"/>
+        <TextBox x:Name="pass2_box" Grid.Column="1" Grid.Row="3"/>
+
+        <Button Grid.Column="2" Click="generate_random_login" Content="generuj login" FontSize="30"/>
+
+        <TextBlock Grid.Column="2" x:Name="result_textBlock" Grid.Row="1" Grid.RowSpan="2" TextAlignment="Center"
+                   Text="Wygenerowany login" VerticalAlignment="Center" FontSize="23" FontStyle="Italic"/>
 
     </Grid>
 </Window>
