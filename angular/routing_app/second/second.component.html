@@ -1,0 +1,68 @@
+<!--
+  Po kliknieciu zakładki drugiego komponentu
+  (second komponent) powinien wyświetlić nam się
+  formularz (ngForm), który zawiera pola: imię i nazwisko,
+  e-mail oraz przycisk "wyślij", który aktywuje się dopiero
+  po wypełnieniu wszyskich pól formularza.
+  Powinien pokazywać się też napis "pole wymagane",
+  gdy klikniemy dane pole, ale go nie wypełnimy.
+-->
+
+<form autocomplete="off" #form="ngForm" id="form">
+  <div class="form">
+    <label for="name">
+      <span>Name: </span>
+      <input type="text" name="name" id="name" class="user-input"
+      [(ngModel)] = "name" required="true" #nameForm = "ngModel">
+      <div class="alert" *ngIf="nameForm.touched && nameForm.invalid">
+        <p style="text-indent: 15px; color: red; font-size: 14px;
+          font-style: italic; font-weight: bold; font-family: sans-serif;">
+          First Name is required!
+        </p>
+      </div>
+    </label>
+
+    <label for="surname">
+      <span>Surname: </span>
+      <input type="text" name="surname" id="surname" class="user-input"
+      [(ngModel)] = "surname" required="true" #surnameForm = "ngModel">
+      <div class="alert" *ngIf="surnameForm.touched && surnameForm.invalid">
+        <p style="text-indent: 15px; color: red; font-size: 14px;
+          font-style: italic; font-weight: bold; font-family: sans-serif;">
+          Surname is required!
+        </p>
+      </div>
+  </label>
+
+    <label for="email">
+        <span>Email: </span>
+        <input type="email" name="email" id="email" class="user-input"
+        [(ngModel)] = "email" required="true" #emailForm = "ngModel"
+          pattern=".+@.+">
+        <div class="alert" *ngIf="emailForm.touched && emailForm.invalid
+          && !emailForm.errors?.['pattern']">
+          <p style="text-indent: 15px; color: red; font-size: 14px;
+            font-style: italic; font-weight: bold; font-family: sans-serif;">
+            Email adress is required!
+          </p>
+        </div>
+
+        <div class="alert" *ngIf="emailForm.touched && emailForm.invalid
+          && emailForm.errors?.['pattern']">
+          <p style="text-indent: 15px; color: red; font-size: 14px;
+          font-style: italic; font-weight: bold; font-family: sans-serif;">
+            Sth wrong with your email adress!
+          </p>
+      </div>
+    </label>
+
+    <div class="buttons">
+      <hr><button type="button" class="btn"
+        (click) = "onSubmit()" [disabled]="!form.form.valid">SUBMIT</button>
+      <button type="reset" class="btn"
+        (click)="onReset()">RESET</button>
+    </div>
+  </div>
+</form>
+
+<router-outlet></router-outlet>
