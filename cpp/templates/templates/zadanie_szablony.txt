@@ -1,0 +1,9 @@
+PROSTY KALKULATOR: 
+Zadeklaruj szablony klasy, utworz klase o nazwie "Kalkulator", posiadająca:
+	- pola prywatne: liczba1, liczba2 (nazwy zmiennych dowolne)
+	- dwuargumentowy konstruktor nadajacy pola liczba1 i liczba 2 okreslone wartosci
+	- publiczne metody: dodawanie, odejmowanie, mnozenie, dzielenie, potegowanie, nww, nwd 
+		kazda z metod zwraca dana wartosc (w potegowaniu liczba2 okresla stopien potegi)
+	wyswietl() ktora wyswietla wszystkie rezultaty
+utworz kilka obiektow o okreslonych typach danych i pochwal sie swoim wynikami :))
+deadline: 23.03.2023!!!

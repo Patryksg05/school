@@ -1,0 +1,7 @@
+﻿  templates.cpp
+C:\Users\Patryksg05\OneDrive\Pulpit\githubSchool\cpp\templates\templates\templates.cpp(51,40): warning C4305: "argument": obcięcie z "double" do "T"
+          with
+          [
+              T=float
+          ]
+  templates.vcxproj -> C:\Users\Patryksg05\OneDrive\Pulpit\githubSchool\cpp\templates\x64\Debug\templates.exe

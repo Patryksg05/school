@@ -17,7 +17,7 @@ int horner(vector<int> w, int stopien, int x)
 int hornerRekurencyjnie(vector<int> w, int stopien, int x)
 {
     if (stopien == 0)
-        return w[0];
+        return w[0]; // wyraz wolny 
     return x * hornerRekurencyjnie(w, stopien - 1, x);
 }
 
