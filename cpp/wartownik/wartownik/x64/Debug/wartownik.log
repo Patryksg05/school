@@ -1,0 +1,3 @@
+﻿  wartownik.cpp
+C:\Users\Patryksg05\OneDrive\Pulpit\wartownik\wartownik\wartownik.cpp(79,15): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+  wartownik.vcxproj -> C:\Users\Patryksg05\OneDrive\Pulpit\wartownik\x64\Debug\wartownik.exe
