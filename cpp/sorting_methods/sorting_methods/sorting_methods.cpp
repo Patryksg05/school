@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-
+    
 #define SIZE 10
 
 class Tab{
@@ -100,10 +100,11 @@ public:
 int main() {
     srand(time(NULL)); 
 
-    Tab tab, tab2;
+    Tab tab, tab2, tab3;
 
     tab.generateTab();
     tab2.generateTab();
+    tab3.generateTab();
 
     std::cout << "DEFUALT METHOD:\nGenerated tab:" << std::endl;
     tab.displayTab();

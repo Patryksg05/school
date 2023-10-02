@@ -1,3 +1,13 @@
 ﻿  sorting_methods.cpp
-C:\Users\Patryksg05\OneDrive\Pulpit\sorting_methods\sorting_methods\sorting_methods.cpp(102,15): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
-  sorting_methods.vcxproj -> C:\Users\Patryksg05\OneDrive\Pulpit\sorting_methods\x64\Debug\sorting_methods.exe
+C:\Users\Patryksg05\OneDrive\Pulpit\githubSchool\cpp\sorting_methods\sorting_methods\sorting_methods.cpp(105,39): warning C4244: "argument": konwersja z "int" do "_Ty", możliwa utrata danych
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\Patryksg05\OneDrive\Pulpit\githubSchool\cpp\sorting_methods\sorting_methods\sorting_methods.cpp(114,43): warning C4244: "=": konwersja z "_Ty" do "int", możliwa utrata danych
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\Patryksg05\OneDrive\Pulpit\githubSchool\cpp\sorting_methods\sorting_methods\sorting_methods.cpp(123,15): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+  sorting_methods.vcxproj -> C:\Users\Patryksg05\OneDrive\Pulpit\githubSchool\cpp\sorting_methods\x64\Debug\sorting_methods.exe
