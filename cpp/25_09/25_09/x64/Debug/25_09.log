@@ -1,0 +1,7 @@
+﻿  25_09.cpp
+C:\Users\Patryksg05\OneDrive\Pulpit\25_09\25_09\25_09.cpp(35,31): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
+C:\Users\Patryksg05\OneDrive\Pulpit\25_09\25_09\25_09.cpp(39,39): warning C4267: "=": konwersja z "size_t" do "int", możliwa utrata danych
+C:\Users\Patryksg05\OneDrive\Pulpit\25_09\25_09\25_09.cpp(45,31): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
+C:\Users\Patryksg05\OneDrive\Pulpit\25_09\25_09\25_09.cpp(48,39): warning C4267: "=": konwersja z "size_t" do "int", możliwa utrata danych
+C:\Users\Patryksg05\OneDrive\Pulpit\25_09\25_09\25_09.cpp(63,38): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
+  25_09.vcxproj -> C:\Users\Patryksg05\OneDrive\Pulpit\25_09\x64\Debug\25_09.exe
