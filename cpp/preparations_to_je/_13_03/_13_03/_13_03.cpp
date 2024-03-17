@@ -130,7 +130,62 @@ public:
                 return false;
         }
     }
+};
 
+class Person {
+private:
+    int id;
+    string firstName, lastName;
+
+public:
+    Person(string fN, string lN) :firstName(fN), lastName(lN)
+    {
+        this->id = rand() % 100 + 1;
+    }
+
+    Person(const Person& person)
+    {
+        this->firstName = person.firstName;
+        this->lastName = person.lastName;
+        this->id= person.id;
+    }
+    ~Person() { }
+
+    int getId() { return this->id; }
+    string getFirstName() { return this->firstName; }
+    string getLastName() { return this->lastName; }
+    virtual string whoAreYou() { return "Person"; }
+
+    void toString()
+    {
+        cout << "Object: " << whoAreYou()
+            << "\nid: " << Person::id
+            << "\nfirst name: " << Person::getFirstName()
+            << "\nlast name: " << Person::getLastName();
+    }
+};
+
+class Student : public Person {
+private:
+    int albumNumber;
+public:
+    Student(string fN, string lN) : Person(fN, lN)
+    {
+        this->albumNumber = rand() % 100 + 1;
+    }
+
+    int getAlbumNumber() { return this->albumNumber; }
+    
+    string whoAreYou() override { return "Student"; }
+    
+    void toString()
+    {
+        cout << "Object: " << Student::whoAreYou()
+            << "\nid: " << Person::getId()
+            << "\nfirst name: " << Person::getFirstName()
+            << "\nlast name: " << Person::getLastName()
+            << "\nalbum number: " << Student::getAlbumNumber();
+    }
 };
 
 int main()
@@ -157,10 +212,17 @@ int main()
     Tab *tab = new Tab();
     tab->setValues();
     tab->sortMethod();
-    tab->displayArray(); */
-
+    tab->displayArray(); 
     Tab* tab = new Tab();
     tab->setValuesRandom();
     tab->displayArray();
     tab->lookingForSentry(72) ? cout << "\nsentry in array!" : cout << "\nno sentry in array!";
+    */
+
+    Person* person = new Person("Jack", "Sparrow");
+    person->toString(); cout << endl;
+    Person* person2 = person;
+    person->toString(); cout << endl;
+    Student* student = new Student("Bradly", "Cooper");
+    student->toString();
 }
