@@ -96,11 +96,41 @@ public:
         }
     }
 
+    void setValuesRandom()
+    {
+        for (int i = 0; i < size; i++)
+            tab[i] = rand() % 100 + 1;
+
+    }
+
     void displayArray()
     {
         for (int i = 0; i < size; i++)
             cout << tab[i] << " ";
     }
+
+    bool lookingForSentry(int element)
+    {
+        tab[0] = element;
+        tab[size] = element;
+
+        int* newArray = new int[size + 1];
+        for (int i = 0; i < size; ++i)
+            newArray[i] = tab[i];
+
+        newArray[size] = element;
+
+        for (int i = 0; i < size + 1; i++)
+        {
+            if (newArray[i] == element && i != size + 1)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+    }
+
 };
 
 int main()
@@ -123,8 +153,14 @@ int main()
     notatka2->getTitleAndContent();
     notatka2->toString(); */
 
+    /*
     Tab *tab = new Tab();
     tab->setValues();
     tab->sortMethod();
+    tab->displayArray(); */
+
+    Tab* tab = new Tab();
+    tab->setValuesRandom();
     tab->displayArray();
+    tab->lookingForSentry(72) ? cout << "\nsentry in array!" : cout << "\nno sentry in array!";
 }
