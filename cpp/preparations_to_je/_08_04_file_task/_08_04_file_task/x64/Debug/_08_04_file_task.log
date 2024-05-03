@@ -1,3 +1,4 @@
 ﻿  _08_04_file_task.cpp
 C:\Users\Patryksg05\OneDrive\Pulpit\githubSchool\cpp\preparations_to_je\_08_04_file_task\_08_04_file_task\_08_04_file_task.cpp(51,50): warning C4267: "return": konwersja z "size_t" do "int", możliwa utrata danych
+C:\Users\Patryksg05\OneDrive\Pulpit\githubSchool\cpp\preparations_to_je\_08_04_file_task\_08_04_file_task\_08_04_file_task.cpp(322,53): warning C4267: "return": konwersja z "size_t" do "int", możliwa utrata danych
   _08_04_file_task.vcxproj -> C:\Users\Patryksg05\OneDrive\Pulpit\githubSchool\cpp\preparations_to_je\_08_04_file_task\x64\Debug\_08_04_file_task.exe

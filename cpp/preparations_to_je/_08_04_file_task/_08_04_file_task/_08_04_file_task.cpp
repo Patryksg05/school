@@ -260,13 +260,14 @@ int main()
 {
     cout << "_8_04 => file task, before quiz" << endl;
     
-    vector<string> res1 = { "4", "7", "-" };
-    vector<string> res2 = { "4", "2", "+", "8", "*" };
 
-    int r1 = notation(res1);
-    int r2 = notation(res2);
+    //vector<string> res1 = { "4", "7", "-" };
+    //vector<string> res2 = { "4", "2", "+", "8", "*" };
 
-    cout << endl << "Results: " << r1 << " " << r2 << endl;
+    //int r1 = notation(res1);
+    //int r2 = notation(res2);
+
+    //cout << endl << "Results: " << r1 << " " << r2 << endl;
 
 
     //File file("liczby.txt");
