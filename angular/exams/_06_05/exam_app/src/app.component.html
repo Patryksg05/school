@@ -1,0 +1,24 @@
+<h2 class="m-3">Liczba  kursów: {{courses.length}}</h2>
+
+<ol class="m-3"><li *ngFor="let course of courses">{{course}}</li></ol>
+
+<form autocomplete="off" #form="ngForm" id="form" class="form">
+
+  <div class="m-3">
+    <label for="name">
+      <p>Imię i nazwisko:</p>
+      <input type="text" name="name" id="name"
+        [(ngModel)] = "name" required="true" #nameForm = "ngModel" >
+    </label>
+  </div>
+
+  <div class="m-3">
+    <label for="course">
+      <p>Numer kursu:</p>
+      <input type="number" name="course" id="course"
+        [(ngModel)] = "course" required="true" #courseForm = "ngModel" >
+    </label>
+  </div>
+
+  <button class="btn btn-primary m-3" (click)="onSubmit()">Zapisz do kursu</button>
+</form>
